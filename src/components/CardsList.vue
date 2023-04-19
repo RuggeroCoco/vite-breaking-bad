@@ -16,7 +16,8 @@ export default {
   <div class="container mt-3">
     <h2 class="text-center">Lista delle cards</h2>
 
-    <div class="row row-cols-4">
+    <h2 v-if="store.loading">Loading...</h2>
+    <div class="row row-cols-4" f-else>
       <div class="col" v-for="card in store.cards" :key="card.id">
         <AppCard :cardObj="card" />
       </div>
