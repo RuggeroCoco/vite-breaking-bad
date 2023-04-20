@@ -2,11 +2,11 @@
 import { store } from "../store";
 export default {
   name: "AppFilters",
-  event: ["search"],
+  emits: ["search"],
   data() {
     return {
       store,
-      archetypes: ["Archfied", "Ally of Justice", "Ancient Gear"],
+      archetypes: ["Archfiend", "Ally of Justice", "Ancient Gear"],
     };
   },
 };
@@ -16,7 +16,11 @@ export default {
   <div class="container">
     <div class="row justify-content-end">
       <div class="col-6">
-        <select class="form-select" v-model="store.selectedArchetype">
+        <select
+          class="form-select"
+          v-model="store.selectedArchetype"
+          @change="$emit('search')"
+        >
           <option value="">All</option>
           <option
             :value="archetype"
